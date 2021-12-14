@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="result"
+            type="com.navdeepkaur.sozentechitunes.data.network.Results" />
+    </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:padding="@dimen/padding_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:id="@+id/movie_image"
+                android:layout_width="match_parent"
+                android:scaleType="fitXY"
+                android:layout_height="@dimen/detail_image_height"
+                android:adjustViewBounds="true"
+                app:imageURL="@{result.previewUrl}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+
+            <TextView
+                android:id="@+id/title_tv"
+                android:layout_width="0dp"
+                app:textVisibility="@{result.trackCensoredName}"
+                android:text="@{result.trackCensoredName}"
+                android:textSize="@dimen/text_size_large"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/rental_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movie_image"
+                />
+
+            <TextView
+                android:id="@+id/type_tv"
+                android:layout_width="0dp"
+                android:textSize="@dimen/text_size_medium"
+                android:text="@{result.primaryGenreName}"
+                android:textColor="@color/purple_200"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/rental_tv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_tv"
+                />
+            <TextView
+                android:id="@+id/artist_tv"
+                android:layout_width="match_parent"
+                android:textSize="@dimen/text_size_medium"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:text="@{@string/by(result.artistName)}"
+                android:textColor="@color/purple_200"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/type_tv"
+                />
+            <TextView
+                android:id="@+id/price_tv"
+                android:layout_width="wrap_content"
+                android:paddingStart="@dimen/padding_small"
+                android:paddingEnd="@dimen/padding_small"
+                android:textColor="@color/purple_500"
+                android:text="@{@string/price(result.formattedPurchasePrice)}"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/title_tv"
+                app:layout_constraintBottom_toTopOf="@+id/rental_tv"
+
+                />
+            <TextView
+                android:id="@+id/rental_tv"
+                android:layout_width="wrap_content"
+                app:textVisibility="@{result.trackRentalPrice}"
+                android:paddingStart="@dimen/padding_small"
+                android:paddingEnd="@dimen/padding_small"
+                android:textColor="@color/purple_500"
+                android:text="@{@string/rental_price(result.formattedRentalPrice)}"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/price_tv"
+                />
+
+            <TextView
+                android:id="@+id/description_tv"
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                android:text="@{result.longDescription}"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/artist_tv"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

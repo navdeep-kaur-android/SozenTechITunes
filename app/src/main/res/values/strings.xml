@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SozenTech ITunes</string>
+    <string name="no_data">No Movies Found</string>
+    <string name="search">Search Movie</string>
+    <string name="price">Buy: %s</string>
+    <string name="rental_price">Rent: %s</string>
+    <string name="by">By: %s</string>
+    <string name="movies">Movies</string>
+    <string name="movie_details">Movie Details</string>
+    <string name="network_unavailable">You are not connected to network</string>
+</resources>

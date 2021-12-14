@@ -1,0 +1,2 @@
+rootProject.name = "SozenTech ITunes"
+include ':app'
